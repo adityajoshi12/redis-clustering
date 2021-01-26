@@ -55,14 +55,14 @@ docker run -d --rm --name sentinel-2 --net redis \
 7. Build client application image
 
 ```
-docker build . -t aditya/redis-client:v1.0.0
+docker build ./applications/client -t aditya/redis-client:v1.0.0
 ```
 
 8. Starting client application
 
 ```
 docker run -it --net redis \
---env-file .env \
+--env-file ./applications/client/.env \
 -p 80:80 \
 aditya/redis-client:v1.0.0
 ```

@@ -8,7 +8,7 @@ const Redis = require("ioredis");
 const host1 = process.env.SENTINEL_HOST1;
 const host2 = process.env.SENTINEL_HOST2;
 const host3 = process.env.SENTINEL_HOST3;
-const port = process.env.REDIS_PORT;
+const port = process.env.SENTINEL_PORT;
 console.log(process.env);
 const redis = new Redis({
   db: 0,
@@ -23,7 +23,7 @@ const redis = new Redis({
 
 let timestamp = 0;
 app.get("/", (req, res) => {
-  Date.now();
+  timestamp = Date.now();
   redis.set("counter", timestamp);
   res.send(timestamp.toString());
 });
